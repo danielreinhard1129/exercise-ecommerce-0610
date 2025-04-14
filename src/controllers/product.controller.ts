@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { createProductService } from "../services/product/create-product.service";
-import { updateProductService } from "../services/product/update-product.service";
-import { getProductsService } from "../services/product/get-products.service";
-import { getProductBySlugService } from "../services/product/get-product-by-slug.service";
 import { deleteProductService } from "../services/product/delete-product.service";
+import { getProductBySlugService } from "../services/product/get-product-by-slug.service";
+import { getProductsService } from "../services/product/get-products.service";
+import { updateProductService } from "../services/product/update-product.service";
 
 export const createProductController = async (
   req: Request,
@@ -11,7 +11,9 @@ export const createProductController = async (
   next: NextFunction
 ) => {
   try {
-    const result = await createProductService(req.body);
+    const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+    const thumbnail = files.thumbnail?.[0];
+    const result = await createProductService(req.body, thumbnail);
     res.status(200).send(result);
   } catch (error) {
     next(error);
