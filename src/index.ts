@@ -1,10 +1,12 @@
 import cors from "cors";
 import express from "express";
 import { PORT } from "./config/env";
+import "./jobs";
 import { errorMiddleware } from "./middlewares/error.middleware";
 import authRouter from "./routes/auth.router";
 import productRouter from "./routes/product.router";
 import sampleRouter from "./routes/sample.router";
+import transactionRouter from "./routes/transaction.router";
 
 const app = express();
 
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use("/samples", sampleRouter);
 app.use("/auth", authRouter);
 app.use("/products", productRouter);
+app.use("/transactions", transactionRouter);
 
 app.use(errorMiddleware);
 

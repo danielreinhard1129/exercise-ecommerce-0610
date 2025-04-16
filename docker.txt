@@ -1,0 +1,12 @@
+CARA PULL IMAGE DARI REGISTRY
+- docker pull <nama-image>:<version>
+- docker pull postgres
+
+CARA LIHAT LIST IMAGE YANG ADA DI LOCAL HOST
+- docker images
+
+CARA STOP CONTAINER
+- docker container stop <nama-container> atau <containerid>
+
+CARA START CONTAINER YANG UDAH EXIST
+- docker container start <nama-container> atau <containerid>
